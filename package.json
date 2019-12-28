@@ -1,0 +1,45 @@
+{
+  "name": "create-terraform-module",
+  "version": "1.0.0",
+  "description": "Create a Terraform Cloud module with one command",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielSinclair/create-terraform-module.git"
+  },
+  "keywords": [
+    "terraform"
+  ],
+  "author": "Daniel Sinclair",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanielSinclair/create-terraform-module/issues"
+  },
+  "homepage": "https://github.com/DanielSinclair/create-terraform-module#readme",
+  "bin": {
+    "create-terraform-module": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "ncc build ./index.js -w -o dist/",
+    "prerelease": "rimraf ./dist/",
+    "release": "ncc build ./index.js -o ./dist/ --minify --no-cache --no-source-map-register",
+    "prepublish": "yarn release",
+    "start": "node dist/index.js"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.20.5",
+    "rimraf": "^3.0.0"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1",
+    "inquirer": "^7.0.1",
+    "open": "^7.0.0",
+    "path": "^0.12.7",
+    "preferences": "^1.0.2",
+    "shelljs": "^0.8.3"
+  }
+}
