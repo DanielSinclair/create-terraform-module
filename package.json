@@ -1,6 +1,6 @@
 {
   "name": "create-terraform-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create a Terraform Cloud module with one command",
   "main": "index.js",
   "repository": {
@@ -39,7 +39,7 @@
     "inquirer": "^7.0.1",
     "open": "^7.0.0",
     "path": "^0.12.7",
-    "preferences": "^1.0.2",
+    "@danielsinclair/preferences": "^2.0.2",
     "shelljs": "^0.8.3"
   }
 }

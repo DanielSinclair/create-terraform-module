@@ -5,7 +5,7 @@ import fs from 'fs'
 import path from 'path'
 import inquirer from 'inquirer'
 import open from 'open'
-import preferences from 'preferences'
+import preferences from '@danielsinclair/preferences'
 import packageJSON from './package.json'
 import shell from 'shelljs'
 
