@@ -9,7 +9,7 @@ import preferences from '@danielsinclair/preferences'
 import packageJSON from './package.json'
 import shell from 'shelljs'
 
-const prefs = new preferences('com.danielsinclair.terraformscripts', {})
+const prefs = new preferences('com.danielsinclair.terraformscripts')
 
 program
 .name(packageJSON.name)
