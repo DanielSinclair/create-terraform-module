@@ -91,14 +91,24 @@ const main = async () => {
   const fullModuleName = 'terraform-' + provider + '-' + moduleName
   const dir = `${process.cwd()}/` + fullModuleName
   if (!fs.existsSync(dir)) fs.mkdirSync(dir)
+  if (!fs.existsSync(`${dir}/.github`)) fs.mkdirSync(`${dir}/.github`)
+  if (!fs.existsSync(`${dir}/.github/workflows`)) fs.mkdirSync(`${dir}/.github/workflows`)
+  fs.writeFileSync(`${dir}/main.tf`, "")
+  fs.writeFileSync(`${dir}/variables.tf`, "")
+  fs.writeFileSync(`${dir}/outputs.tf`, "")
   const gitignore = fs.readFileSync(path.resolve(__dirname+'/template', '.gitignore'), 'utf8')
   fs.writeFileSync(`${dir}/.gitignore`, gitignore)
+  const pushAction = fs.readFileSync(path.resolve(__dirname+'/template', 'push.yml'), 'utf8')
+  fs.writeFileSync(`${dir}/.github/workflows/push.yml`, pushAction)
   fs.writeFileSync(`${dir}/package.json`, JSON.stringify({
     name: fullModuleName,
     version: '1.0.0',
     private: true,
     devDependencies: { 'terraform-scripts': 'latest' },
-    scripts: { deploy: 'terraform-scripts deploy' }
+    scripts: { 
+      deploy: 'terraform-scripts deploy',
+      delete: 'terraform-scripts delete'
+    }
   }, null, 2))
   shell.cd(dir)
   if (shell.which('yarn')) shell.exec('yarn')
