@@ -7,7 +7,7 @@ import inquirer from 'inquirer'
 import open from 'open'
 import preferences from '@danielsinclair/preferences'
 import packageJSON from './package.json'
-//import shell from 'shelljs'
+import shell from 'shelljs'
 
 const prefs = new preferences('com.danielsinclair.terraformscripts')
 
@@ -110,9 +110,9 @@ const main = async () => {
       delete: 'terraform-scripts delete'
     }
   }, null, 2))
-  //shell.cd(dir)
-  //if (shell.which('yarn')) shell.exec('yarn')
-  //if (shell.which('git')) shell.exec('git init')
+  shell.cd(dir)
+  if (shell.which('yarn')) shell.exec('yarn')
+  if (shell.which('git')) shell.exec('git init')
 }
 
 try {
